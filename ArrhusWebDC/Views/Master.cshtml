@@ -1,0 +1,50 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@{
+    Layout = null;
+}
+<!doctype html>
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+    <title>@Umbraco.Field("siteName", recursive: true)</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="/js/libs/modernizr-2.0.6.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/jquery-2.1.4.min.js"></script>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-theme.min.css" rel="stylesheet" />
+    <link href="~/css/style.css" rel="stylesheet" />
+    <link href='https://fonts.googleapis.com/css?family=Josefin+Sans:600' rel='stylesheet' type='text/css'>
+</head>
+<body>
+    <div class="container">
+        <nav>
+            @{Html.RenderPartial("Dropdown");}
+        </nav>
+    </div>
+    <div class="container">
+        <header class="main-header">
+            <h1 class="text-center text-center2">@Umbraco.Field("siteName", recursive: true)</h1>
+        </header>
+    </div>
+    @RenderBody()
+
+    <div class="clear">
+        <div class="navbar navbar-default navbar-fixed-bottom" style="margin-top:70px">
+            <div class="container">
+                <p class="navbar-text pull-left">@Umbraco.Field("footer", recursive: true)</p>
+                <a class="navbar-btn btn-primary btn pull-right">LinkedIn</a>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
+

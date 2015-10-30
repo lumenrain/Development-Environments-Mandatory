@@ -1,0 +1,14 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage<ArrhusWebDC.Models.ContactModel>
+@using (Html.BeginUmbracoForm<ArrhusWebDC.Controllers.ContactSurfaceController>("HandleFormPost"))
+{
+
+
+            <label for="emailFrom">Email</label> @Html.TextBoxFor(x => x.Email, new { @class = "emailFrom form-control", placeholder = "Email" })
+            <label for="nameFrom">Name</label> @Html.TextBoxFor(x => x.Name, new { @class = "nameFrom form-control", placeholder = "Name" })
+            <br />
+            <label for="messageForm">Message</label>
+            <br />
+            @Html.TextAreaFor(x => x.Message, new { @class = "messageFrom form-control", @rows = "8", placeholder = "Message" })
+            <br />
+            <input type="submit" value="Submit" class="btn btn-default" />
+} 

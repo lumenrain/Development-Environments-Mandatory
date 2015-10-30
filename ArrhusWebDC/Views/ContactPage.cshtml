@@ -1,0 +1,11 @@
+﻿@using ArrhusWebDC.Controllers;
+@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@{
+    Layout = "Master.cshtml";
+}
+
+<div class="container-fluid">
+    <div class="container">
+        @Html.Action("ShowForm", "ContactSurface")
+    </div>
+</div>

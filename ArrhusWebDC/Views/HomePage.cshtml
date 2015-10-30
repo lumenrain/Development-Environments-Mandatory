@@ -1,0 +1,13 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@{
+    Layout = "Master.cshtml";
+}
+<div class="container">
+    <div class="text-center">
+        <img src="~/images/brackets_logo.png" class="logo-image" />
+    </div>
+    <h2 class="text-center">Some of my previous projects</h2>
+	<div class="text-center list-projects">
+        <h3>@Umbraco.RenderMacro("listProjectsElsewhere")</h3>
+    </div>
+</div> 

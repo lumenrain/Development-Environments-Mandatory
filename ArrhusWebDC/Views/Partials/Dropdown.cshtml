@@ -1,0 +1,58 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+
+<nav id="TopBar" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+		
+        @{
+            var maxLevelForNav = 3;            
+            var home = CurrentPage.AncestorsOrSelf(1).First();
+
+            @RenderNavForNode(home, 1)
+
+            foreach (var page in home.Children.Where("Visible")) {
+            if (page.DocumentTypeAlias == "ContactForm")
+            { 
+             
+            }
+            else
+            {
+                @RenderNavForNode(page, maxLevelForNav);
+            }
+        }
+          }
+    </ul>
+
+        </div>
+    </nav>
+
+@helper RenderNavForNode(dynamic page, int maxLevel)
+{
+    var current = CurrentPage.Id == page.Id ? "active" : null;
+    
+	if (page.Children.Where("Visible").Any() && page.Level == 2)
+	{
+		@:<li class="dropdown @current"><a href="@page.Url" class="dropdown-toggle @current" data-toggle="dropdown" role="button" aria-expanded="false">@page.Name<span class="caret"></span></a>
+	}
+	
+	else if (page.Children.Where("Visible").Any() && page.Level > 3)
+	{
+		@:<li class="dropdown-submenu @current"><a class="@current" href="@page.Url">@page.Name</a>
+	}
+	else
+	{
+		@:<li><a class="@current" href="@page.Url">@page.Name</a></li>
+	}
+	
+    if (page.Children.Where("Visible").Any() && page.Level < maxLevel)
+    {
+		
+        <ul class="dropdown-menu" role="menu">
+            @foreach (var subPage in page.Children.Where("Visible"))
+            {
+                @RenderNavForNode(subPage, maxLevel)
+            }
+        </ul>
+    }
+}
